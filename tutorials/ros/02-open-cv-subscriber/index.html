@@ -1938,7 +1938,7 @@
         
   
   <span class="md-ellipsis">
-    Installing ROS2 (galactic) on Ubuntu 20.04
+    Installing ROS2 (humble) on Ubuntu 20.04
   </span>
   
 
@@ -2123,7 +2123,7 @@
 <p>derived from <a href="https://automaticaddison.com/getting-started-with-opencv-in-ros-2-galactic-python/">here</a> with thanks!</p>
 <pre><code>python3 -m pip install --upgrade pip
 pip install opencv-python
-sudo apt install ros-galactic-vision-opencv
+sudo apt install ros-humble-vision-opencv
 </code></pre>
 <pre><code class="language-bash"># make a brand new workspace
 mkdir -p dan_ws/src
@@ -2131,7 +2131,7 @@ cd dan_ws/src/
 cd src
 ros2 pkg create --build-type ament_python opencv_testing --dependencies rclpy image_transport cv_bridge sensor_msgs std_msgs python3-opencv
 cd ..
-rosdep install -i --from-path src --rosdistro galactic -y
+rosdep install -i --from-path src --rosdistro humble -y
 colcon build
 ls
 . install/local_setup.bash
@@ -2192,7 +2192,7 @@ nano package.xml
   &lt;license&gt;MIT License&lt;/license&gt;
 </code></pre>
 <pre><code class="language-bash">cd ~/dan_ws
-rosdep install -i --from-path src --rosdistro galactic -y
+rosdep install -i --from-path src --rosdistro humble -y
 colcon build
 ros2 run opencv_testing image_subscriber
 </code></pre>

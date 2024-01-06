@@ -2074,7 +2074,7 @@
         
   
   <span class="md-ellipsis">
-    Installing ROS2 (galactic) on Ubuntu 20.04
+    Installing ROS2 (humble) on Ubuntu 20.04
   </span>
   
 
@@ -2415,7 +2415,7 @@ float64 y
 <pre><code class="language-bash">which ros2
 </code></pre>
 <h2 id="example">Example</h2>
-<p>cat /opt/ros/galactic/share/geometry_msgs/msg/Polygon.msg</p>
+<p>cat /opt/ros/humble/share/geometry_msgs/msg/Polygon.msg</p>
 <h2 id="modify-cmakelists">Modify CMakeLists</h2>
 <ul>
 <li>Only possible if you make an <code>ament_cmake</code> type project</li>
@@ -2451,7 +2451,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 </code></pre>
 <h2 id="prep-the-package">prep the package</h2>
 <pre><code class="language-bash">cd ~/dan_ws
-rosdep install -i --from-path src --rosdistro galactic -y
+rosdep install -i --from-path src --rosdistro humble -y
 colcon build --packages-select dan_messages
 . install/local_setup.bash 
 </code></pre>
@@ -2461,7 +2461,7 @@ colcon build --packages-select dan_messages
 Starting &gt;&gt;&gt; opencv_testing
 Finished &lt;&lt;&lt; opencv_testing [1.01s]                                                  
 --- stderr: dan_messages
-CMake Error at /opt/ros/galactic/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:60 (message):
+CMake Error at /opt/ros/humble/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:60 (message):
 
 ....
 
@@ -2482,7 +2482,7 @@ Summary: 1 package finished [1.27s]
 </code></pre>
 <h1 id="using-custom-messages">Using custom messages</h1>
 <h2 id="simple-publisher">Simple Publisher</h2>
-<p>from <a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html#write-the-publisher-node">here</a></p>
+<p>from <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html#write-the-publisher-node">here</a></p>
 <pre><code class="language-python">import rclpy
 from rclpy.node import Node
 
@@ -2556,7 +2556,7 @@ self.get_logger().info('Publishing: x:{}, y:{}'.format(msg.x,msg.y))
 </code></pre>
 <h2 id="build">Build</h2>
 <pre><code class="language-bash">cd ~/dan_ws
-rosdep install -i --from-path src --rosdistro galactic -y
+rosdep install -i --from-path src --rosdistro humble -y
 colcon build
 . install/local_setup.bash 
 </code></pre>
@@ -2570,8 +2570,8 @@ ros2 topic echo /topic
 </code></pre>
 <h2 id="resources">Resources</h2>
 <ul>
-<li><a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html</a></li>
-<li><a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html</a></li>
 </ul>
 
 

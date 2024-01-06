@@ -1945,7 +1945,7 @@
         
   
   <span class="md-ellipsis">
-    Installing ROS2 (galactic) on Ubuntu 20.04
+    Installing ROS2 (humble) on Ubuntu 20.04
   </span>
   
 
@@ -2134,21 +2134,21 @@
 
   <h1>01 colcon and ws</h1>
 
-<p>derived from <a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#create-your-own-package">here</a></p>
+<p>derived from <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#create-your-own-package">here</a></p>
 <pre><code class="language-bash">mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws
-git clone https://github.com/ros2/examples src/examples -b galactic
+git clone https://github.com/ros2/examples src/examples -b humble
 colcon build --symlink-install
 colcon test
 . install/setup.bash
 </code></pre>
 <h2 id="colcon-cd-and-tab-complete">Colcon cd and tab complete</h2>
 <ul>
-<li><a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-cd">https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-cd</a></li>
-<li><a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-tab-completion">https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-tab-completion</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-cd">https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-cd</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-tab-completion">https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#setup-colcon-tab-completion</a></li>
 </ul>
 <pre><code class="language-bash">echo &quot;source /usr/share/colcon_cd/function/colcon_cd.sh&quot; &gt;&gt; ~/.bashrc
-echo &quot;export _colcon_cd_root=/opt/ros/galactic/&quot; &gt;&gt; ~/.bashrc
+echo &quot;export _colcon_cd_root=/opt/ros/humble/&quot; &gt;&gt; ~/.bashrc
 echo &quot;source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash&quot; &gt;&gt; ~/.bashrc
 </code></pre>
 <pre><code class="language-bash">. ros2_ws/install/setup.bash
@@ -2159,9 +2159,9 @@ ros2 run examples_rclcpp_minimal_publisher publisher_member_function
 </code></pre>
 <h2 id="workspace-setup">Workspace setup</h2>
 <pre><code class="language-bash">cd ~/ros2_ws/src
-git clone https://github.com/ros/ros_tutorials.git -b galactic-devel
+git clone https://github.com/ros/ros_tutorials.git -b humble-devel
 cd ..
-rosdep install -i --from-path src --rosdistro galactic -y
+rosdep install -i --from-path src --rosdistro humble -y
 sed -i &quot;s/setWindowTitle(\&quot;TurtleSim\&quot;);/setWindowTitle(\&quot;MyTurtleSim\&quot;);/&quot; ~/ros2_ws/src/ros_tutorials/turtlesim/src/turtle_frame.cpp
 colcon build
 . ~/ros2_ws/install/setup.bash
@@ -2171,8 +2171,8 @@ ros2 run turtlesim turtlesim_node
 <pre><code>ros2 run turtlesim turtlesim_node
 </code></pre>
 <h2 id="creating-a-package">Creating a Package</h2>
-<p><a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html</a>
-<a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#create-your-own-package">https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#create-your-own-package</a></p>
+<p><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html</a>
+<a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#create-your-own-package">https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#create-your-own-package</a></p>
 <pre><code class="language-bash">cd ~/ros2_ws/src
 </code></pre>
 <pre><code>ros2 pkg create --build-type ament_cmake &lt;package_name&gt;

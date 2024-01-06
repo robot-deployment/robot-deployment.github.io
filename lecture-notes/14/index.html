@@ -2013,7 +2013,7 @@
         
   
   <span class="md-ellipsis">
-    Installing ROS2 (galactic) on Ubuntu 20.04
+    Installing ROS2 (humble) on Ubuntu 20.04
   </span>
   
 
@@ -2276,11 +2276,11 @@
 <ul>
 <li><a href="https://turtlebot.github.io/turtlebot4-user-manual/software/turtlebot4_packages.html">Turtlebot Package Information</a></li>
 <li><a href="https://turtlebot.github.io/turtlebot4-user-manual/tutorials/driving.html">Driving your Turtlebot</a></li>
-<li><a href="https://github.com/luxonis/depthai-ros/tree/galactic">Oak D Camera ROS Repository</a></li>
+<li><a href="https://github.com/luxonis/depthai-ros/tree/humble">Oak D Camera ROS Repository</a></li>
 <li><a href="https://turtlebot.github.io/turtlebot4-user-manual/software/sensors.html#oak-d">Turtlebot Oak-D Information</a></li>
 </ul>
 <h2 id="rviz">RVIZ</h2>
-<pre><code class="language-bash">sudo apt install ros-galactic-rviz2
+<pre><code class="language-bash">sudo apt install ros-humble-rviz2
 rviz2
 </code></pre>
 <h2 id="update-udev">Update udev</h2>
@@ -2294,11 +2294,11 @@ sudo udevadm control --reload-rules &amp;&amp; sudo udevadm trigger
 <h2 id="launch-files">Launch Files</h2>
 <ul>
 <li><a href="https://design.ros2.org/articles/roslaunch.html">launch system</a></li>
-<li><a href="https://docs.ros.org/en/galactic/Tutorials/Intermediate/Launch/Launch-Main.html">https://docs.ros.org/en/galactic/Tutorials/Intermediate/Launch/Launch-Main.html</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html">https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html</a></li>
 <li><a href="https://roboticscasual.com/tutorial-ros2-launch-files-all-you-need-to-know/#launch-event-list">https://roboticscasual.com/tutorial-ros2-launch-files-all-you-need-to-know/#launch-event-list</a></li>
 </ul>
 <h2 id="find-launch-files">Find Launch Files</h2>
-<pre><code class="language-bash">cd /opt/ros/galactic
+<pre><code class="language-bash">cd /opt/ros/humble
 find . -iname &quot;*launch*&quot;
 </code></pre>
 <h2 id="kill-auto-started-node">Kill Auto-Started node</h2>
@@ -2309,7 +2309,7 @@ killall rgb_stereo_node
 </code></pre>
 <h2 id="find-the-launch-file">Find the Launch File</h2>
 <p>From <a href="https://turtlebot.github.io/turtlebot4-user-manual/software/sensors.html#oak-d">here</a>, we see that we are looking for <code>oakd.launch.py</code></p>
-<pre><code class="language-bash">cd /opt/ros/galactic/share/turtlebot4_bringup/launch
+<pre><code class="language-bash">cd /opt/ros/humble/share/turtlebot4_bringup/launch
 cat oakd.launch.py 
 </code></pre>
 <h2 id="find-parameters">Find Parameters</h2>

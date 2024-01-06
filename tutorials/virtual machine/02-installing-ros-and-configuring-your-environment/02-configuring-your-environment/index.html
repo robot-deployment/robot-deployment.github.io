@@ -1890,7 +1890,7 @@
         
   
   <span class="md-ellipsis">
-    Installing ROS2 (galactic) on Ubuntu 20.04
+    Installing ROS2 (humble) on Ubuntu 20.04
   </span>
   
 
@@ -2210,8 +2210,8 @@
 <h2 id="external-resources">External Resources</h2>
 <p>This information is derived from</p>
 <ul>
-<li><a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html">https://docs.ros.org/en/galactic/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html</a></li>
-<li><a href="https://turtlebot.github.io/turtlebot4-user-manual/overview/quick_start.html#installing-ros2-galactic-on-your-pc">https://turtlebot.github.io/turtlebot4-user-manual/overview/quick_start.html#installing-ros2-galactic-on-your-pc</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html">https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html</a></li>
+<li><a href="https://turtlebot.github.io/turtlebot4-user-manual/setup/basic.html">https://turtlebot.github.io/turtlebot4-user-manual/setup/basic.html</a></li>
 </ul>
 <h2 id="essential-tools">Essential Tools</h2>
 <pre><code class="language-bash">sudo apt install net-tools -y
@@ -2244,12 +2244,12 @@ catkin_make
 
 <h3 id="set-additional-environment-variables">Set Additional Environment Variables</h3>
 <ul>
-<li><a href="https://docs.ros.org/en/galactic/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html#the-ros-domain-id-variable">https://docs.ros.org/en/galactic/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html#the-ros-domain-id-variable</a></li>
+<li><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html#the-ros-domain-id-variable">https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html#the-ros-domain-id-variable</a></li>
 </ul>
 <pre><code class="language-bash">echo &quot;export ROS_DOMAIN_ID=0&quot; &gt;&gt; ~/.bashrc
 echo &quot;export ROS_LOCALHOST_ONLY=0&quot; &gt;&gt; ~/.bashrc
 </code></pre>
-<p>more detailed information on domain id's can be found <a href="https://docs.ros.org/en/galactic/Concepts/About-Domain-ID.html">here</a></p>
+<p>more detailed information on domain id's can be found <a href="https://docs.ros.org/en/humble/Concepts/About-Domain-ID.html">here</a></p>
 <p>working with multiple robots:</p>
 <ul>
 <li><a href="https://turtlebot.github.io/turtlebot4-user-manual/tutorials/multiple_robots.html">https://turtlebot.github.io/turtlebot4-user-manual/tutorials/multiple_robots.html</a></li>
@@ -2259,7 +2259,7 @@ echo &quot;export ROS_LOCALHOST_ONLY=0&quot; &gt;&gt; ~/.bashrc
 <li><a href="https://github.com/micro-ROS/micro_ros_stm32cubemx_utils/issues/23">https://github.com/micro-ROS/micro_ros_stm32cubemx_utils/issues/23</a></li>
 <li><a href="https://integration-service.docs.eprosima.com/en/latest/examples/same_protocol/ros2_change_domain.html">https://integration-service.docs.eprosima.com/en/latest/examples/same_protocol/ros2_change_domain.html</a></li>
 <li><a href="https://foxglove.dev/docs/studio/connection/ros2">https://foxglove.dev/docs/studio/connection/ros2</a></li>
-<li><a href="https://docs.ros.org/en/galactic/Concepts/About-Domain-ID.html">https://docs.ros.org/en/galactic/Concepts/About-Domain-ID.html</a></li>
+<li><a href="https://docs.ros.org/en/humble/Concepts/About-Domain-ID.html">https://docs.ros.org/en/humble/Concepts/About-Domain-ID.html</a></li>
 </ul>
 <h3 id="install-other-packages">Install Other Packages</h3>
 <pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install -y \
@@ -2299,7 +2299,7 @@ source ~/.bashrc
 <ol>
 <li>
 <p>Declare your DDS implementation</p>
-<p>Derived from here: <a href="https://docs.ros.org/en/galactic/Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html#switch-to-rmw-cyclonedds">https://docs.ros.org/en/galactic/Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html#switch-to-rmw-cyclonedds</a></p>
+<p>Derived from here: <a href="https://docs.ros.org/en/humble/Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html#switch-to-rmw-cyclonedds">https://docs.ros.org/en/humble/Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html#switch-to-rmw-cyclonedds</a></p>
 <pre><code>echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" &gt;&gt; ~/.bashrc
 </code></pre>
 <blockquote>
@@ -2328,8 +2328,8 @@ git config --global advice.addIgnoredFile false
 </code></pre>
 <h3 id="install-some-turtlebot4-specific-packages">Install some Turtlebot4-specific packages</h3>
 <pre><code class="language-bash">sudo apt update
-sudo apt install -y ros-galactic-turtlebot4-desktop
-sudo apt install -y ros-galactic-turtlebot4-navigation
+sudo apt install -y ros-humble-turtlebot4-desktop
+sudo apt install -y ros-humble-turtlebot4-navigation
 </code></pre>
 
 
