@@ -16,37 +16,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://robot-deployment.github.io/tutorials/jupyter-and-python/grab-data/</loc>
+         <loc>https://robot-deployment.github.io/lecture-notes/</loc>
          <lastmod>2025-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://robot-deployment.github.io/tutorials/jupyter-and-python/plot_imu_data/</loc>
-         <lastmod>2025-01-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://robot-deployment.github.io/tutorials/jupyter-and-python/fft/fft/</loc>
-         <lastmod>2025-01-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://robot-deployment.github.io/tutorials/jupyter-and-python/filtering-example/filtering-example/</loc>
-         <lastmod>2025-01-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://robot-deployment.github.io/tutorials/jupyter-and-python/simple-plot-example/simple-plot-example/</loc>
-         <lastmod>2025-01-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://robot-deployment.github.io/tutorials/opencv/</loc>
-         <lastmod>2025-01-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://robot-deployment.github.io/tutorials/turtlebot/04-oak-d-camera/</loc>
+         <loc>https://robot-deployment.github.io/tutorials/</loc>
          <lastmod>2025-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
