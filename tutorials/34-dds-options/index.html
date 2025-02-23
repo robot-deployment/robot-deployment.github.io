@@ -12,11 +12,13 @@
       
       
       
-        <link rel="canonical" href="https://robot-deployment.github.io/tutorials/ros-dds-issues/">
+        <link rel="canonical" href="https://robot-deployment.github.io/tutorials/34-dds-options/">
       
       
-        <link rel="prev" href="../34-dds-options/">
+        <link rel="prev" href="../">
       
+      
+        <link rel="next" href="../ros-dds-issues/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -27,7 +29,7 @@
 
     
       
-        <title>ROS2 DDS Issues - Robot Deployment</title>
+        <title>34 dds options - Robot Deployment</title>
       
     
     
@@ -73,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#dds-options" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -105,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ROS2 DDS Issues
+              34 dds options
             
           </span>
         </div>
@@ -499,26 +506,6 @@
                 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../34-dds-options/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    34 dds options
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -528,7 +515,117 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    34 dds options
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    34 dds options
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dds-options" class="md-nav__link">
+    DDS Options
+  </a>
+  
+    <nav class="md-nav" aria-label="DDS Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#student-virtual-machines-on-ros2" class="md-nav__link">
+    Student virtual machines on ROS2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turtlebot-4" class="md-nav__link">
+    Turtlebot 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Turtlebot 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#irobot-create3" class="md-nav__link">
+    Irobot Create3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi-on-the-turtlebot" class="md-nav__link">
+    Raspberry pi on the Turtlebot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dds-rtps" class="md-nav__link">
+    DDS / RTPS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turtlebot4" class="md-nav__link">
+    Turtlebot4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ros-dds-issues/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -537,7 +634,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -568,6 +664,75 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dds-options" class="md-nav__link">
+    DDS Options
+  </a>
+  
+    <nav class="md-nav" aria-label="DDS Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#student-virtual-machines-on-ros2" class="md-nav__link">
+    Student virtual machines on ROS2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turtlebot-4" class="md-nav__link">
+    Turtlebot 4
+  </a>
+  
+    <nav class="md-nav" aria-label="Turtlebot 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#irobot-create3" class="md-nav__link">
+    Irobot Create3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi-on-the-turtlebot" class="md-nav__link">
+    Raspberry pi on the Turtlebot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dds-rtps" class="md-nav__link">
+    DDS / RTPS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turtlebot4" class="md-nav__link">
+    Turtlebot4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -581,7 +746,7 @@
                   
 
   
-    <a href="https://github.com/robot-deployment/project_robot-deployment/edit/main/docs/tutorials/ros-dds-issues.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/robot-deployment/project_robot-deployment/edit/main/docs/tutorials/34-dds-options.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -589,43 +754,46 @@
   
 
 
-  <h1>ROS2 DDS Issues</h1>
+  <h1>34 dds options</h1>
 
+<h2 id="dds-options">DDS Options</h2>
+<h3 id="student-virtual-machines-on-ros2">Student virtual machines on ROS2</h3>
 <ul>
-<li><a href="https://duckduckgo.com/?q=ros+discovery+sucks&amp;t=fpas&amp;ia=web">https://duckduckgo.com/?q=ros+discovery+sucks&amp;t=fpas&amp;ia=web</a></li>
-<li><a href="https://github.com/eProsima/DDS-Router/discussions/392">https://github.com/eProsima/DDS-Router/discussions/392</a></li>
-<li><a href="https://eprosima-dds-router.readthedocs.io/en/latest/rst/user_manual/participants/wan.html">https://eprosima-dds-router.readthedocs.io/en/latest/rst/user_manual/participants/wan.html</a></li>
-<li><a href="https://github.com/ros2/rmw_fastrtps/issues/617">https://github.com/ros2/rmw_fastrtps/issues/617</a></li>
-<li><a href="https://www.linkedin.com/posts/ricardotellez_dds-in-ros2-sucks-as-ros2-engineers-we-activity-7191610318484103168-RtCO">https://www.linkedin.com/posts/ricardotellez_dds-in-ros2-sucks-as-ros2-engineers-we-activity-7191610318484103168-RtCO</a></li>
-<li><a href="https://discourse.ros.org/t/frustrations-with-state-of-hobby-ros-2-robotics/35900/20">https://discourse.ros.org/t/frustrations-with-state-of-hobby-ros-2-robotics/35900/20</a></li>
-<li><a href="https://github.com/ros2/ros2/issues/1617">https://github.com/ros2/ros2/issues/1617</a></li>
-<li><a href="https://duckduckgo.com/?q=Adding+a+static+route+in+netplan+for+a+laptop+that+goes+between+two+networks&amp;t=fpas&amp;ia=web">https://duckduckgo.com/?q=Adding+a+static+route+in+netplan+for+a+laptop+that+goes+between+two+networks&amp;t=fpas&amp;ia=web</a></li>
-<li><a href="https://facsiaginsa.com/ubuntu/add-static-route-using-netplan-on-ubuntu">https://facsiaginsa.com/ubuntu/add-static-route-using-netplan-on-ubuntu</a></li>
-<li>
-<p><a href="https://github.com/TWTom041/jetson-nano-image-ubuntu22.04">https://github.com/TWTom041/jetson-nano-image-ubuntu22.04</a></p>
-</li>
-<li>
-<p><a href="https://duckduckgo.com/?q=fastdds+ros2+wifi+sucks&amp;t=ffab&amp;ia=web">https://duckduckgo.com/?q=fastdds+ros2+wifi+sucks&amp;t=ffab&amp;ia=web</a></p>
-</li>
-<li><a href="https://discourse.ros.org/t/shared-memory-transport-in-fastdds-for-image-publisher-has-lower-frame-rate-than-udp-transport/39874/7">https://discourse.ros.org/t/shared-memory-transport-in-fastdds-for-image-publisher-has-lower-frame-rate-than-udp-transport/39874/7</a></li>
-<li><a href="https://discourse.ros.org/t/dds-middleware-complaint/39821">https://discourse.ros.org/t/dds-middleware-complaint/39821</a></li>
-<li><a href="https://discourse.ros.org/t/interim-policy-on-the-use-of-generative-ai-in-osrf-projects/39731">https://discourse.ros.org/t/interim-policy-on-the-use-of-generative-ai-in-osrf-projects/39731</a></li>
-<li><a href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/transport/shared_memory/shared_memory.html#sharedmemtransportdescriptor">https://fast-dds.docs.eprosima.com/en/latest/fastdds/transport/shared_memory/shared_memory.html#sharedmemtransportdescriptor</a></li>
-<li><a href="https://duckduckgo.com/?q=alternative+to+ROS&amp;t=ffab&amp;ia=web">https://duckduckgo.com/?q=alternative+to+ROS&amp;t=ffab&amp;ia=web</a></li>
-<li><a href="https://www.theroboticsspace.com/blog/Robotics-without-ROS/">https://www.theroboticsspace.com/blog/Robotics-without-ROS/</a></li>
-<li><a href="https://www.reddit.com/r/robotics/comments/abs45p/alternatives_to_ros/">https://www.reddit.com/r/robotics/comments/abs45p/alternatives_to_ros/</a></li>
-<li><a href="https://zeromq.org/">https://zeromq.org/</a></li>
-<li>
-<p><a href="https://iroboteducation.github.io/create3_docs/setup/xml-config/">https://iroboteducation.github.io/create3_docs/setup/xml-config/</a></p>
-</li>
-<li>
-<p><a href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/example.html">https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/example.html</a></p>
-</li>
-<li><a href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/env_vars/env_vars.html">https://fast-dds.docs.eprosima.com/en/latest/fastdds/env_vars/env_vars.html</a></li>
-<li><a href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/discovery_server/ros2_discovery_server.html">https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/discovery_server/ros2_discovery_server.html</a></li>
-<li><a href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/ros2_configure.html">https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/ros2_configure.html</a></li>
-<li><a href="https://github.com/jeffbass/imagezmq">https://github.com/jeffbass/imagezmq</a></li>
+<li>depending on the hardware below, only a couple options are available in reality</li>
+<li>require bridged adapter mode with unique ip address...how to do this on a virtual machine on WiFi?</li>
+<li>need wifi connectivity</li>
+<li>need to anticipate up to 40-50 students max</li>
 </ul>
+<h3 id="turtlebot-4">Turtlebot 4</h3>
+<p>Consists of the devices below
+I anticipate 15 turtlebots max</p>
+<h4 id="irobot-create3">Irobot Create3</h4>
+<ul>
+<li>this is the platform for the mobile robots we have</li>
+<li>only has a 2.4 Ghz radio: <a href="https://iroboteducation.github.io/create3_docs/setup/network-config/">https://iroboteducation.github.io/create3_docs/setup/network-config/</a></li>
+<li>time synchronization requires the internet or manual set every power cycle, which is not feasible.</li>
+<li>only supports a subset of DDS vendors, fast-dds and cyclone-dds: <a href="https://iroboteducation.github.io/create3_docs/setup/xml-config/">https://iroboteducation.github.io/create3_docs/setup/xml-config/</a></li>
+<li>finding MAC addresses of these devices in advance is time-consuming but they should not change</li>
+</ul>
+<h3 id="raspberry-pi-on-the-turtlebot">Raspberry pi on the Turtlebot</h3>
+<ul>
+<li>connects to other sensors: depth camera, lidar, others</li>
+<li>runs ubuntu 20 (this year), 22/24 next time we run the class probably</li>
+<li>requires 5GHz in practice for high throughput data streams</li>
+<li>in theory supports a broader range of DDS/RTPS clients.  The client type is hard-coded in a couple different configs and in practice it's hard to config and test</li>
+<li>needs internet access for package updates (images shipped on the turtlebot were DOA this semester)</li>
+</ul>
+<h3 id="dds-rtps">DDS / RTPS</h3>
+<p>There is some information on setting up static dds so that discovery which uses udp multicast is not needed:</p>
+<p>unfortunately, information about actually implementing custom dds configs on the Create3, virtual machine, and raspberry pi is scarce</p>
+<p>We need a solution where</p>
+<ul>
+<li>all students can see each other's pcs on ROS2</li>
+<li>students who may come and go with their devices can be visible on the network</li>
+<li>high data throughput for camera data and that many computers talking to each other.</li>
+</ul>
+<p>Solutions that require hard-coded configurations will be difficult to implement in a classroom scenario, because people come and go all the time, and any at-scale, real-world testing can only really be done when all the students and their computers are there, and then it's too late.</p>
+<h3 id="turtlebot4">Turtlebot4</h3>
 
 
 

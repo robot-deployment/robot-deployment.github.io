@@ -21,6 +21,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://robot-deployment.github.io/tutorials/34-dds-options/</loc>
+         <lastmod>2025-02-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://robot-deployment.github.io/tutorials/ros-dds-issues/</loc>
          <lastmod>2025-02-23</lastmod>
          <changefreq>daily</changefreq>
