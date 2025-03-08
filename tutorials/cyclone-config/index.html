@@ -1,0 +1,1886 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta name="robots" content="nofollow" />
+
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://robot-deployment.github.io/tutorials/cyclone-config/">
+      
+      
+        <link rel="prev" href="../34-dds-options/">
+      
+      
+        <link rel="next" href="../ros-dds-issues/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.0">
+            
+
+        
+
+    
+      
+        <title>Cyclone config - Robot Deployment</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9f615399.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cyclonedds-config" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Robot Deployment" class="md-header__button md-logo" aria-label="Robot Deployment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Robot Deployment
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cyclone config
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/robot-deployment/project_robot-deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../course-info/syllabus/" class="md-tabs__link">
+          
+  
+    
+  
+  Course info
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lecture-notes/" class="md-tabs__link">
+          
+  
+    
+  
+  Lecture notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Robot Deployment" class="md-nav__button md-logo" aria-label="Robot Deployment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Robot Deployment
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/robot-deployment/project_robot-deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Course info
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Course info
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-info/syllabus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Syllabus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../lecture-notes/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Lecture notes
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Lecture notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_4">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34-dds-options/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    34 dds options
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Cyclone config
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Cyclone config
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cyclonedds-config" class="md-nav__link">
+    CycloneDDS Config
+  </a>
+  
+    <nav class="md-nav" aria-label="CycloneDDS Config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    Initial Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Initial Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi" class="md-nav__link">
+    Raspberry Pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create3-setup" class="md-nav__link">
+    Create3 Setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-1-without-wifi" class="md-nav__link">
+    Recipe 1: Without Wifi
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe 1: Without Wifi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create3" class="md-nav__link">
+    Create3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi_1" class="md-nav__link">
+    raspberry pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machine" class="md-nav__link">
+    Virtual Machine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-2-create3-connected-to-the-vm-over-wifi" class="md-nav__link">
+    Recipe 2: Create3 connected to the VM over wifi
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe 2: Create3 connected to the VM over wifi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create3_1" class="md-nav__link">
+    Create3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi_2" class="md-nav__link">
+    Raspberry pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machine_1" class="md-nav__link">
+    Virtual Machine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-3-only-wifi-to-your-vm" class="md-nav__link">
+    Recipe 3: Only Wifi to your VM
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe 3: Only Wifi to your VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-3" class="md-nav__link">
+    create 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi_3" class="md-nav__link">
+    Raspberry pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm" class="md-nav__link">
+    VM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-4-ethernet-only-with-the-create3-republisher-next-chapter" class="md-nav__link">
+    Recipe 4: Ethernet only, with the Create3 Republisher (next chapter)
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe 4: Ethernet only, with the Create3 Republisher (next chapter)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create3_2" class="md-nav__link">
+    Create3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi_4" class="md-nav__link">
+    raspberry pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machine_2" class="md-nav__link">
+    Virtual Machine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ros-dds-issues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ROS2 DDS Issues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cyclonedds-config" class="md-nav__link">
+    CycloneDDS Config
+  </a>
+  
+    <nav class="md-nav" aria-label="CycloneDDS Config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    Initial Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Initial Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi" class="md-nav__link">
+    Raspberry Pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create3-setup" class="md-nav__link">
+    Create3 Setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-1-without-wifi" class="md-nav__link">
+    Recipe 1: Without Wifi
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe 1: Without Wifi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create3" class="md-nav__link">
+    Create3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi_1" class="md-nav__link">
+    raspberry pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machine" class="md-nav__link">
+    Virtual Machine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-2-create3-connected-to-the-vm-over-wifi" class="md-nav__link">
+    Recipe 2: Create3 connected to the VM over wifi
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe 2: Create3 connected to the VM over wifi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create3_1" class="md-nav__link">
+    Create3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi_2" class="md-nav__link">
+    Raspberry pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machine_1" class="md-nav__link">
+    Virtual Machine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-3-only-wifi-to-your-vm" class="md-nav__link">
+    Recipe 3: Only Wifi to your VM
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe 3: Only Wifi to your VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-3" class="md-nav__link">
+    create 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi_3" class="md-nav__link">
+    Raspberry pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm" class="md-nav__link">
+    VM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recipe-4-ethernet-only-with-the-create3-republisher-next-chapter" class="md-nav__link">
+    Recipe 4: Ethernet only, with the Create3 Republisher (next chapter)
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe 4: Ethernet only, with the Create3 Republisher (next chapter)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create3_2" class="md-nav__link">
+    Create3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raspberry-pi_4" class="md-nav__link">
+    raspberry pi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machine_2" class="md-nav__link">
+    Virtual Machine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/robot-deployment/project_robot-deployment/edit/main/docs/tutorials/cyclone-config.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Cyclone config</h1>
+
+<h2 id="cyclonedds-config">CycloneDDS Config</h2>
+<p>This chapter provides three working recipes for getting your turtlebot  sending messages over ROS -- albeit with cycloneDDS and unicast.</p>
+<p>The downside of unicast is that, because these messages are sent between two peers, these networks can't scale to  many machines, as the load on the network grows quite  quickly.</p>
+<p>Below we describe the initial setup of your turtlebot, virtual machine, and create3 to prepare it for use with these recipes.</p>
+<h3 id="initial-setup">Initial Setup</h3>
+<p>First, you will need a wired ethernet adapter on your host PC.  You can use a USB ethernet adapter if your computer doesn't have one.</p>
+<p>Set the ip address of your host machine to:</p>
+<p><strong>ip:</strong> 192.168.5.5/24<br />
+<strong>gateway:</strong> 192.168.5.1</p>
+<p>For your virtual machine, you will need to add a second bridged adapter to your setup.  While the VM is off, go to settings -&gt; network and go to adapter 2.</p>
+<p><a href="figures/ethernet.png">Bridge to your ethernet adapter</a>{height=200}</p>
+<p>Your guest virtual machine will need specific setups for each recipe, but you don't need to prepare it at this point.</p>
+<h4 id="raspberry-pi">Raspberry Pi</h4>
+<p>To prep the raspberry pi, you will want to disable the discovery service</p>
+<pre><code class="language-bash">sudo systemctl stop discovery.service
+sudo systemctl disable discovery.service
+</code></pre>
+<p>You also need to disable the turtlebot 4 startup service, as it doesn't work right.</p>
+<pre><code class="language-bash">sudo systemctl stop turtlebot4.service 
+sudo systemctl disable turtlebot4.service 
+</code></pre>
+<p>You will also want to delete <code>/etc/netplan/40-ethernets.yaml</code>, as the following config files for <code>/etc/netplan/50-wifis.yaml</code> include your ethernet addresses.</p>
+<h4 id="create3-setup">Create3 Setup</h4>
+<p>At :8080 of your raspberry pi's ip address, go to application -&gt; configuration</p>
+<p>ROS 2 Domain ID (default 0): 0</p>
+<p>Namespace:<br />
+/c3_03</p>
+<p>RMW_IMPLEMENTATION:<br />
+rmw_cyclonedds_cpp</p>
+<p>Enable Fast DDS discovery server?<br />
+unchecked</p>
+<p>Address and port of Fast DDS discovery server:<br />
+blank</p>
+<p>Application ROS 2 Parameters File</p>
+<pre><code class="language-yaml">c3_03:
+  motion_control:
+    ros__parameters:
+      safety_override: &quot;backup_only&quot;
+</code></pre>
+<h3 id="recipe-1-without-wifi">Recipe 1: Without Wifi</h3>
+<p>This first recipe tries to eliminate wifi altogether, in order to ensure high transmission speeds.  Unfortunately, though, because the raspberry pi's two ethernet adapters can't be bridged (using settings I could find), this means the Create3 and VM guest cannot publish and subscribe to each other's topics.  Though the raspberryi pi can see both sets of messages, it would need to be set up to act as a broker, retransmitting important messages from the create3 out to the VM and vice-versa.  Thus, though this works, it is not a complete working example between all devices.</p>
+<h4 id="create3">Create3</h4>
+<p>in addition to the initial setup described above, go to the beta features menu -&gt; override rmw profile</p>
+<p>The field should be:</p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;DontRoute&gt;true&lt;/DontRoute&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+        &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<h4 id="raspberry-pi_1">raspberry pi</h4>
+<p><code>/etc/turtlebot4/setup.bash</code></p>
+<pre><code class="language-bash">export RMW_IMPLEMENTATION=&quot;rmw_cyclonedds_cpp&quot;
+export CYCLONEDDS_URI=&quot;/home/ubuntu/cyclonedds.xml&quot;
+export ROBOT_NAMESPACE=&quot;/rpi_03&quot;
+export ROS_DOMAIN_ID=&quot;0&quot;
+export TURTLEBOT4_DIAGNOSTICS=&quot;1&quot;
+export WORKSPACE_SETUP=&quot;/opt/ros/humble/setup.bash&quot;
+# don't think this is necessary with cyclone dds
+# [ -t 0 ] &amp;&amp; export ROS_SUPER_CLIENT=True || export ROS_SUPER_CLIENT=False 
+source $WORKSPACE_SETUP
+</code></pre>
+<p><code>~/cyclonedds.xml</code></p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;NetworkInterface name=&quot;eth0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+                &lt;NetworkInterface name=&quot;usb0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+            &lt;/Interfaces&gt;
+            &lt;!--&lt;DontRoute&gt;true&lt;/DontRoute&gt;--&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address for your raspberry pi's eth0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.1&quot;/&gt; 
+
+            &lt;!--The static ip address for your raspberry pi's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.1&quot;/&gt; 
+
+            &lt;!--The static ip address for your create3's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.2&quot;/&gt; 
+
+            &lt;!--The static ip address of your virtual ethernet adapter 
+            connected to your host's ethernet adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.6&quot;/&gt; 
+          &lt;/Peers&gt;
+    &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<p><code>/etc/netplan/50-wifis.yaml</code></p>
+<pre><code class="language-yaml">network:
+    version: 2
+    wifis:
+        renderer: NetworkManager
+        wlan0:
+            access-points:
+                ASPIN:
+#                    band: 5GHz # you can enable this if you have reliable wifi
+                    password: ASPIN4TW!
+            addresses:
+            # The static IP address of the raspberry pi's WLAN0 adapter
+            - 10.166.219.18/24 
+            dhcp4: false 
+            dhcp6: false 
+            nameservers: 
+                addresses:
+                - 1.1.1.1 
+                - 8.8.8.8 
+                - 8.8.4.4 
+            optional: true
+            routes:
+                - to: default
+                  via: 10.166.219.1
+    ethernets:
+        renderer: NetworkManager
+        eth0:
+            addresses:
+            # The static ip address for your raspberry pi's eth0 adapter
+            - 192.168.185.1/24 
+            optional: true
+        usb0:
+            addresses:
+            # The static ip address for your raspberry pi's usb0 adapter
+            - 192.168.186.1/24 
+            dhcp4: false
+</code></pre>
+<h4 id="virtual-machine">Virtual Machine</h4>
+<p><code>/etc/netplan/50-cloud-init.yaml</code></p>
+<pre><code class="language-yaml">network:
+    version: 2
+    ethernets:
+        enp0s3:
+            dhcp4: no
+            dhcp6: no
+            addresses:
+            # The static ip address for your virtual ethernet adapter 
+            # connected to your host wifi adapter
+            - 10.166.219.70/24 
+            optional: false
+            routes:
+            - to: 0.0.0.0/0
+              via: 10.166.219.1
+              metric: 100
+            optional: true
+            nameservers:
+                addresses:
+                - 1.1.1.1
+                - 8.8.8.8
+                - 8.8.4.4
+        enp0s8:
+          dhcp4: no 
+          dhcp6: no 
+          addresses:
+            # The static ip address of your virtual ethernet adapter 
+            # connected to your host's ethernet adapter
+            - 192.168.185.6/24 
+# not necessary since it doesn't route
+#          routes:
+#          - to: 192.168.186.0/24
+#            # The static ip address for your raspberry pi's eth0 adapter
+#            via: 192.168.185.1/24 
+</code></pre>
+<p><code>/etc/turtlebot4_discovery/setup.bash</code></p>
+<pre><code class="language-bash">source /opt/ros/humble/setup.bash
+export RMW_IMPLEMENTATION=&quot;rmw_cyclonedds_cpp&quot;
+export CYCLONEDDS_URI=&quot;/home/ubuntu/cyclonedds.xml&quot;
+export ROS_DOMAIN_ID=0
+</code></pre>
+<p><code>cyclonedds.xml</code></p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;NetworkInterface name=&quot;enp0s8&quot;/&gt;  
+            &lt;/Interfaces&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address of your loopback interface --&gt;
+            &lt;Peer Address=&quot;127.0.0.1&quot;/&gt;
+
+            &lt;!--The static ip address for your raspberry pi's eth0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.1&quot;/&gt; 
+
+            &lt;!--not necessary since it doesn't work--&gt;
+            &lt;!--The static ip address for your create3's usb0 adapter--&gt;
+            &lt;!--&lt;Peer Address=&quot;192.168.186.2&quot;/&gt; --&gt; 
+          &lt;/Peers&gt;
+        &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<h3 id="recipe-2-create3-connected-to-the-vm-over-wifi">Recipe 2: Create3 connected to the VM over wifi</h3>
+<p>This recipe addresses the fact that in recipe 1, the virtual machine and create3 are not on the same subnet and cannot directly communicate.  This eliminates the need for the Raspberry pi to serve as a re-transmitter of important topics, but requires a cable still to the raspberry pi to ensure high-speed data transfers for the OakD Camera</p>
+<h4 id="create3_1">Create3</h4>
+<ol>
+<li>
+<p>The configuration for this recipe should be the same as the initial setup described at the beginning of this chapter.  However, you should connect the wifi to ASPIN</p>
+<blockquote>
+<p>The Create3 cannot be set to use a static IP address, therefore, once it has been connected, note the IP address</p>
+</blockquote>
+</li>
+<li>
+<p>Next, in the beta features menu -&gt; override rmw profile</p>
+</li>
+</ol>
+<p>The field should be:</p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;NetworkInterface name=&quot;wlan0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+                &lt;NetworkInterface name=&quot;usb0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+            &lt;/Interfaces&gt;
+            &lt;DontRoute&gt;true&lt;/DontRoute&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address for your raspberry pi's eth0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.1&quot;/&gt; 
+            &lt;!--The static ip address for your raspberry pi's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.1&quot;/&gt; 
+            &lt;!--The static ip address for your create3's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.2&quot;/&gt; 
+            &lt;!--The static ip address of your virtual ethernet adapter 
+            connected to your host's ethernet adapter --&gt;
+            &lt;Peer Address=&quot;192.168.185.6&quot;/&gt; 
+            &lt;!--The static IP address of your Virtual Machine 
+            (over the host wifi)--&gt;
+            &lt;Peer Address=&quot;10.166.219.70&quot;/&gt; 
+          &lt;/Peers&gt;
+        &lt;/Discovery&gt;
+
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<h4 id="raspberry-pi_2">Raspberry pi</h4>
+<p><code>/etc/netplan/50-wifis.yaml</code></p>
+<pre><code class="language-yaml">network:
+    version: 2
+    wifis:
+        renderer: NetworkManager
+        wlan0:
+            access-points:
+                ASPIN:
+#                    band: 5GHz # you can enable this if you have reliable wifi
+                    password: ASPIN4TW!
+            addresses:
+            #The static IP address of the raspberry pi's WLAN0 adapter
+            - 10.166.219.18/24 
+            dhcp4: false
+            dhcp6: false
+            nameservers:
+                addresses:
+                - 1.1.1.1
+                - 8.8.8.8
+                - 8.8.4.4
+            optional: true
+            routes:
+                - to: default
+                  # The ip address for the gateway to the ASPIN network
+                  via: 10.166.219.1 
+    ethernets:
+        renderer: NetworkManager
+        eth0:
+            addresses:
+            # The static ip address for your raspberry pi's eth0 adapter
+            - 192.168.185.1/24 
+            optional: true
+            dhcp4: false
+        usb0:
+            addresses:
+            # The static ip address for your raspberry pi's usb0 adapter
+            - 192.168.186.1/24 
+            dhcp4: false
+</code></pre>
+<p><code>/etc/turtlebot4/setup.bash</code></p>
+<pre><code class="language-bash">export RMW_IMPLEMENTATION=&quot;rmw_cyclonedds_cpp&quot;
+export CYCLONEDDS_URI=&quot;/home/ubuntu/cyclonedds.xml&quot;
+export FASTRTPS_DEFAULT_PROFILES_FILE=&quot;/home/ubuntu/fastdds_p2p.xml&quot;
+export ROBOT_NAMESPACE=&quot;/rpi_03&quot;
+export ROS_DOMAIN_ID=&quot;0&quot;
+export TURTLEBOT4_DIAGNOSTICS=&quot;1&quot;
+export WORKSPACE_SETUP=&quot;/opt/ros/humble/setup.bash&quot;
+[ -t 0 ] &amp;&amp; export ROS_SUPER_CLIENT=True || export ROS_SUPER_CLIENT=False
+
+source $WORKSPACE_SETUP
+</code></pre>
+<p><code>~/~cyclonedds.xml</code></p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;NetworkInterface name=&quot;usb0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+                &lt;NetworkInterface name=&quot;eth0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+            &lt;/Interfaces&gt;
+            &lt;DontRoute&gt;true&lt;/DontRoute&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address for your raspberry pi's eth0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.1&quot;/&gt; 
+            &lt;!--The static ip address for your raspberry pi's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.1&quot;/&gt; 
+            &lt;!--The static ip address for your create3's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.2&quot;/&gt; 
+            &lt;!--The static ip address of your virtual ethernet adapter 
+            connected to your host's ethernet adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.6&quot;/&gt; 
+          &lt;/Peers&gt;
+    &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<h4 id="virtual-machine_1">Virtual Machine</h4>
+<p><code>cyclonedds.xml</code></p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;NetworkInterface name=&quot;enp0s8&quot;/&gt;
+                &lt;NetworkInterface name=&quot;enp0s3&quot;/&gt;
+            &lt;/Interfaces&gt;
+            &lt;DontRoute&gt;true&lt;/DontRoute&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address for your raspberry pi's eth0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.1&quot;/&gt; 
+            &lt;!--The static ip address of your virtual ethernet adapter 
+            connected to your host's ethernet adapter --&gt;
+            &lt;Peer Address=&quot;192.168.185.6&quot;/&gt; 
+            &lt;!--The Create3's WLAN0 IP address (assigned dynamically)--&gt;
+            &lt;Peer Address=&quot;10.166.219.222&quot;/&gt; 
+          &lt;/Peers&gt;
+    &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<p><code>/etc/turtlebot4_discovery/setup.bash</code></p>
+<pre><code class="language-bash">source /opt/ros/humble/setup.bash
+export RMW_IMPLEMENTATION=&quot;rmw_cyclonedds_cpp&quot;
+export CYCLONEDDS_URI=&quot;/home/ubuntu/cyclonedds.xml&quot;
+export ROS_DOMAIN_ID=0
+</code></pre>
+<p><code>/etc/netplan/50-cloud-init.yaml</code></p>
+<pre><code class="language-yaml">network:
+    version: 2
+    ethernets:
+        enp0s3:
+            dhcp4: no
+            dhcp6: no
+            addresses:
+            # The static ip address for your virtual ethernet adapter 
+            # connected to your host wifi adapter
+            - 10.166.219.70/24 
+            optional: false
+            routes:
+            - to: 0.0.0.0/0
+            # The ip address for the gateway to the ASPIN network
+              via: 10.166.219.1
+              metric: 100
+            optional: true
+            nameservers:
+                addresses:
+                - 1.1.1.1 
+                - 8.8.8.8 
+                - 8.8.4.4 
+        enp0s8:
+          dhcp4: no 
+          dhcp6: no 
+          addresses:
+            # the static ip address of your virtual ethernet adapter 
+            # connected to your host's ethernet adapter.
+            - 192.168.185.6/24 
+</code></pre>
+<h3 id="recipe-3-only-wifi-to-your-vm">Recipe 3: Only Wifi to your VM</h3>
+<p>In this recipe, the virtual machine communicates to both the create3 and raspberry pi over wifi, while the communication between the create3 and wifi remains over usb ethernet.  The speeds will be slower but you don't need any physical ethernet adapters on your pc or wires hanging out of the turtlebot.</p>
+<h4 id="create-3">create 3</h4>
+<ol>
+<li>
+<p>The configuration for this recipe should be the same as the initial setup.  However, you should connect the wifi to ASPIN</p>
+<blockquote>
+<p>The Create3 cannot be set to use a static IP address, therefore, once it has been connected, note the IP address</p>
+</blockquote>
+</li>
+<li>
+<p>Next, in the beta features -&gt; override rmw profile</p>
+</li>
+</ol>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;NetworkInterface name=&quot;wlan0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+                &lt;NetworkInterface name=&quot;usb0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+            &lt;/Interfaces&gt;
+            &lt;DontRoute&gt;true&lt;/DontRoute&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address for your raspberry pi's eth0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.1&quot;/&gt; 
+            &lt;!--The static ip address for your raspberry pi's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.1&quot;/&gt; 
+            &lt;!--The static ip address for your create3's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.2&quot;/&gt; 
+            &lt;!--The static ip address of your virtual ethernet adapter 
+            connected to your host's ethernet adapter --&gt;
+            &lt;Peer Address=&quot;192.168.185.6&quot;/&gt; 
+            &lt;!--The static ip address for your virtual ethernet adapter 
+            connected to your host wifi adapter--&gt;            
+            &lt;Peer Address=&quot;10.166.219.70&quot;/&gt; 
+          &lt;/Peers&gt;
+        &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<h4 id="raspberry-pi_3">Raspberry pi</h4>
+<p><code>/etc/netplan/50-wifis.yaml</code></p>
+<pre><code class="language-yaml">network:
+    version: 2
+    wifis:
+        renderer: NetworkManager
+        wlan0:
+            access-points:
+                ASPIN:
+                    # you can enable this if you have reliable wifi
+                    band: 5GHz 
+                    password: ASPIN4TW!
+            addresses:
+            # The static IP address of the raspberry pi's WLAN0 adapter
+            - 10.166.219.18/24 
+            dhcp4: false 
+            dhcp6: false 
+            nameservers: 
+                addresses:
+                - 1.1.1.1
+                - 8.8.8.8
+                - 8.8.4.4
+            optional: true
+            routes:
+                - to: default
+                  # The ip address for the gateway to the ASPIN network
+                  via: 10.166.219.1
+    ethernets:
+        renderer: NetworkManager
+        eth0:
+            addresses:
+            # The static ip address for your raspberry pi's eth0 
+            # adapter (unused)
+            - 192.168.185.1/24 
+            optional: true
+            dhcp4: false
+        usb0:
+            addresses:
+            # The static ip address for your raspberry pi's usb0 adapter
+            - 192.168.186.1/24 
+            dhcp4: false
+</code></pre>
+<p><code>/etc/turtlebot4/setup.bash</code></p>
+<pre><code class="language-bash">export RMW_IMPLEMENTATION=&quot;rmw_cyclonedds_cpp&quot;
+export CYCLONEDDS_URI=&quot;/home/ubuntu/cyclonedds.xml&quot;
+export ROBOT_NAMESPACE=&quot;/rpi_03&quot;
+export ROS_DOMAIN_ID=&quot;0&quot;
+export TURTLEBOT4_DIAGNOSTICS=&quot;1&quot;
+export WORKSPACE_SETUP=&quot;/opt/ros/humble/setup.bash&quot;
+source $WORKSPACE_SETUP
+</code></pre>
+<p><code>cyclonedds.xml</code></p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;NetworkInterface name=&quot;usb0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+                &lt;NetworkInterface name=&quot;eth0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+                &lt;NetworkInterface name=&quot;wlan0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+            &lt;/Interfaces&gt;
+            &lt;DontRoute&gt;true&lt;/DontRoute&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address for your raspberry pi's eth0 adapter --&gt;
+            &lt;Peer Address=&quot;192.168.185.1&quot;/&gt; 
+            &lt;!--The static ip address for your raspberry pi's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.1&quot;/&gt; 
+            &lt;!--The static ip address for your create3's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.2&quot;/&gt; 
+            &lt;!--The static ip address of your virtual ethernet adapter 
+            connected to your host's ethernet adapter --&gt;
+            &lt;Peer Address=&quot;192.168.185.6&quot;/&gt; 
+    &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<h4 id="vm">VM</h4>
+<p><code>/etc/netplan/50-cloud-init.yaml</code></p>
+<pre><code class="language-yaml">network:
+    version: 2
+    ethernets:
+        enp0s3:
+            dhcp4: no
+            dhcp6: no
+            addresses:
+            # The static ip address for your virtual ethernet adapter 
+            # connected to your host wifi adapter
+            - 10.166.219.70/24 
+            optional: false
+            routes:
+            - to: 0.0.0.0/0
+              # The ip address for the gateway to the ASPIN network
+              via: 10.166.219.1
+              metric: 100
+            optional: true
+            nameservers:
+                addresses:
+                - 1.1.1.1
+                - 8.8.8.8
+                - 8.8.4.4
+        enp0s8:
+          dhcp4: no
+          dhcp6: no
+          addresses:
+            # The static ip address of your virtual ethernet adapter 
+            # connected to your host's ethernet adapter
+            - 192.168.185.6/24 
+</code></pre>
+<p><code>/home/danaukes/cyclonedds.xml</code></p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;!--the virtual adapter connected to your host's wifi adapter--&gt;
+                &lt;NetworkInterface name=&quot;enp0s3&quot;/&gt; 
+            &lt;/Interfaces&gt;
+            &lt;DontRoute&gt;true&lt;/DontRoute&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address for your virtual ethernet adapter 
+            connected to your host wifi adapter--&gt;
+            &lt;Peer Address=&quot;10.166.219.70&quot;/&gt; 
+            &lt;!--The Create3's WLAN0 IP address (assigned dynamically)--&gt;
+            &lt;Peer Address=&quot;10.166.219.222&quot;/&gt;  
+            &lt;!--The static IP address of the raspberry pi's WLAN0 adapter--&gt;
+            &lt;Peer Address=&quot;10.166.219.18&quot;/&gt; 
+          &lt;/Peers&gt;
+    &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<p><code>/etc/turtlebot4_discovery/setup.bash</code></p>
+<pre><code class="language-bash">source /opt/ros/humble/setup.bash
+export RMW_IMPLEMENTATION=&quot;rmw_cyclonedds_cpp&quot;
+export CYCLONEDDS_URI=&quot;/home/ubuntu/cyclonedds.xml&quot;
+export ROS_DOMAIN_ID=0
+</code></pre>
+<h3 id="recipe-4-ethernet-only-with-the-create3-republisher-next-chapter">Recipe 4: Ethernet only, with the Create3 Republisher (next chapter)</h3>
+<p>This recipe tries to eliminates wifi altogether, in order to ensure high transmission speeds.  This solves the bridging problem from Recipe 1, allowing any device on the raspberry pi's network adapters to gain access to the Create3's most important topics.  This could be considered a replacement or fix to recipe 1</p>
+<h4 id="create3_2">Create3</h4>
+<p>in addition to the initial setup described at the beginning of the chapter, go to the beta features menu -&gt; override rmw profile</p>
+<p>The field should be:</p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;DontRoute&gt;true&lt;/DontRoute&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+        &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<p>Furthermore, since you are working completely over ethernet, you can disable the create3's wifi connection using "Beta Features" -&gt; "Forget Wifi Network"</p>
+<p>Also, rename the namespace from "/c3_03" to "/rpi_03/_do_not_use" (replacing 03 with your turtlebot's namespace).  </p>
+<p>You will also need to reconfigure the safety parameters according to the next chapter</p>
+<p>Save and restart the application.</p>
+<h4 id="raspberry-pi_4">raspberry pi</h4>
+<p><code>/etc/turtlebot4/setup.bash</code></p>
+<pre><code class="language-bash">export RMW_IMPLEMENTATION=&quot;rmw_cyclonedds_cpp&quot;
+export CYCLONEDDS_URI=&quot;/home/ubuntu/cyclonedds.xml&quot;
+export ROBOT_NAMESPACE=&quot;/rpi_03&quot;
+export ROS_DOMAIN_ID=&quot;0&quot;
+export TURTLEBOT4_DIAGNOSTICS=&quot;1&quot;
+export WORKSPACE_SETUP=&quot;/opt/ros/humble/setup.bash&quot;
+source $WORKSPACE_SETUP
+</code></pre>
+<p><code>~/cyclonedds.xml</code></p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;NetworkInterface name=&quot;eth0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+                &lt;NetworkInterface name=&quot;usb0&quot; priority=&quot;default&quot; 
+                multicast=&quot;default&quot;/&gt;
+            &lt;/Interfaces&gt;
+            &lt;!--&lt;DontRoute&gt;true&lt;/DontRoute&gt;--&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address for your raspberry pi's eth0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.1&quot;/&gt; 
+
+            &lt;!--The static ip address for your raspberry pi's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.1&quot;/&gt; 
+
+            &lt;!--The static ip address for your create3's usb0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.186.2&quot;/&gt; 
+
+            &lt;!--The static ip address of your virtual ethernet adapter 
+            connected to your host's ethernet adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.6&quot;/&gt; 
+          &lt;/Peers&gt;
+    &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+<p><code>/etc/netplan/50-wifis.yaml</code></p>
+<pre><code class="language-yaml">network:
+    version: 2
+    wifis:
+        renderer: NetworkManager
+        wlan0:
+            access-points:
+                ASPIN:
+#                    band: 5GHz # you can enable this if you have reliable wifi
+                    password: ASPIN4TW!
+            addresses:
+            # The static IP address of the raspberry pi's WLAN0 adapter
+            - 10.166.219.18/24 
+            dhcp4: false 
+            dhcp6: false 
+            nameservers: 
+                addresses:
+                - 1.1.1.1 
+                - 8.8.8.8 
+                - 8.8.4.4 
+            optional: true
+            routes:
+                - to: default
+                  via: 10.166.219.1
+    ethernets:
+        renderer: NetworkManager
+        eth0:
+            addresses:
+            # The static ip address for your raspberry pi's eth0 adapter
+            - 192.168.185.1/24 
+            optional: true
+        usb0:
+            addresses:
+            # The static ip address for your raspberry pi's usb0 adapter
+            - 192.168.186.1/24 
+            dhcp4: false
+</code></pre>
+<p>Finally, if the turtlebot service is not running you will need to start the republisher in a dedicated terminal:</p>
+<pre><code class="language-bash">ros2 launch create3_republisher create3_republisher_launch.py \
+robot_ns:=/rpi_03/_do_not_use republisher_ns:=/rpi_03
+</code></pre>
+<!-- 
+Fix the startup script
+
+
+<pre><code>sudo cp /usr/sbin/turtlebot4-start /usr/sbin/turtlebot4-start.bak
+</code></pre>
+
+
+
+<pre><code>sudo nano /usr/sbin/turtlebot4-start
+</code></pre>
+
+
+
+<pre><code class="language-bash">#export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+#
+#rmw=&quot;rmw_fastrtps_cpp&quot;
+#rmw_config=&quot;/etc/turtlebot4/fastdds_rpi.xml&quot;
+#
+#if [[ &quot;$rmw&quot; == &quot;rmw_fastrtps_cpp&quot; ]]
+#then
+#  if [[ ! -z $rmw_config ]]
+#  then
+#    export FASTRTPS_DEFAULT_PROFILES_FILE=$rmw_config
+#  fi
+#elif [[ &quot;$rmw&quot; == &quot;rmw_cyclonedds_cpp&quot; ]]
+#then
+#  if [[ ! -z $rmw_config ]]
+#  then
+#    export CYCLONEDDS_URI=$rmw_config
+#  fi
+#fi
+
+export RMW_IMPLEMENTATION=&quot;rmw_cyclonedds_cpp&quot;
+export CYCLONEDDS_URI=&quot;/home/ubuntu/cyclonedds.xml&quot;
+</code></pre>
+
+
+sudo systemctl status turtlebot4.service
+-->
+
+<h4 id="virtual-machine_2">Virtual Machine</h4>
+<p><code>/etc/netplan/50-cloud-init.yaml</code></p>
+<pre><code class="language-yaml">network:
+    version: 2
+    ethernets:
+        enp0s3:
+            dhcp4: no
+            dhcp6: no
+            addresses:
+            # The static ip address for your virtual ethernet adapter 
+            # connected to your host wifi adapter
+            - 10.166.219.70/24 
+            optional: false
+            routes:
+            - to: 0.0.0.0/0
+              via: 10.166.219.1
+              metric: 100
+            optional: true
+            nameservers:
+                addresses:
+                - 1.1.1.1
+                - 8.8.8.8
+                - 8.8.4.4
+        enp0s8:
+          dhcp4: no 
+          dhcp6: no 
+          addresses:
+            # The static ip address of your virtual ethernet adapter 
+            # connected to your host's ethernet adapter
+            - 192.168.185.6/24 
+</code></pre>
+<p><code>/etc/turtlebot4_discovery/setup.bash</code></p>
+<pre><code class="language-bash">source /opt/ros/humble/setup.bash
+export RMW_IMPLEMENTATION=&quot;rmw_cyclonedds_cpp&quot;
+export CYCLONEDDS_URI=&quot;/home/ubuntu/cyclonedds.xml&quot;
+export ROS_DOMAIN_ID=0
+</code></pre>
+<p><code>cyclonedds.xml</code></p>
+<pre><code class="language-xml">&lt;CycloneDDS&gt;
+    &lt;Domain&gt;
+        &lt;General&gt;
+            &lt;Interfaces&gt;
+                &lt;NetworkInterface name=&quot;enp0s8&quot;/&gt;  
+            &lt;/Interfaces&gt;
+            &lt;AllowMulticast&gt;false&lt;/AllowMulticast&gt;
+            &lt;EnableMulticastLoopback&gt;true&lt;/EnableMulticastLoopback&gt;
+        &lt;/General&gt;
+        &lt;Discovery&gt;
+          &lt;ParticipantIndex&gt;auto&lt;/ParticipantIndex&gt;
+          &lt;MaxAutoParticipantIndex&gt;100&lt;/MaxAutoParticipantIndex&gt;
+          &lt;Peers&gt;
+            &lt;!--The static ip address of your loopback interface --&gt;
+            &lt;Peer Address=&quot;127.0.0.1&quot;/&gt;
+
+            &lt;!--The static ip address for your raspberry pi's eth0 adapter--&gt;
+            &lt;Peer Address=&quot;192.168.185.1&quot;/&gt; 
+          &lt;/Peers&gt;
+      &lt;/Discovery&gt;
+    &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "toc.follow", "navigation.top", "content.action.edit"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
